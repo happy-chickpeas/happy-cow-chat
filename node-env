@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 COMMAND=$1
 
 MAIN_CONTAINER="node"
@@ -20,6 +21,7 @@ Options
   npx     runs npx in a node-alpine container. You can use additional arguments.
   expo    runs expo in a node-alpine container. You can use additional arguments.
   yarn    runs yarn in a node-alpine container. You can use additional arguments.
+  prod    runs commands without attaching the code as volume. You can use additional arguments.
 
 END
 }
@@ -41,6 +43,9 @@ case "$COMMAND" in
     ;;
   'help'|'-h'|'--help')
     usage
+    ;;
+  'prod')
+    docker-compose -f docker-compose.prod.yml run $MAIN_CONTAINER ${@:2}
     ;;
   *)
     err "Not supported argument: \"$1\""
