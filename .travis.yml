@@ -4,6 +4,7 @@ services:
   - docker
 
 script:
-  - ./node-env prod npm run test:ci
+  - ./node-env prod npm run lint
+  - ./node-env prod npm run test
   - ./node-env prod npm run build:android
 
