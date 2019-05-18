@@ -4,14 +4,6 @@ services:
     build: .
     network_mode: host
     working_dir: /usr/app/app
-    user: "${CURRENT_UID}"
-    volumes:
-      - .:/usr/app/
-    ports:
-      - 8080:8080
-      - 8081:8081
-      - 19000:19000
-      - 19001:19001
     environment:
       - EXPO_USER
       - EXPO_PASSWORD

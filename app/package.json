@@ -5,7 +5,11 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
+    "test": "node ./node_modules/jest/bin/jest.js --watchAll",
+    "test:ci": "node ./node_modules/jest/bin/jest.js",
+    "build:android": "expo login -u $EXPO_USER -p $EXPO_PASSWORD && expo build:android --non-interactive",
+    "build:ios": "expo login -u $EXPO_USER -p $EXPO_PASSWORD && expo build:ios --non-interactive --apple-id $EXPO_APPLE_ID",
+    "build:all": "npm run build:ios && npm run build:android"
   },
   "jest": {
     "preset": "jest-expo"
