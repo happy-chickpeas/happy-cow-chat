@@ -15,7 +15,7 @@ export default class CustomTextInput extends React.Component
                 placeholderTextColor="#80DED9"
                 secureTextEntry={this.props.secureTextEntry}
                 onFocus={() => this.props.stateCallback(true)}
-                onEndEditing={() => this.props.stateCallback(false)}
+                onSubmitEditing={(event) => {this.props.stateCallback(false); this.props.textInputCallback(event.nativeEvent.text)}}
                 >
             </TextInput>
         );

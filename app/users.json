@@ -1,0 +1,15 @@
+{
+    "users":
+    [
+        {
+            "username": "Mazsi",
+            "email-address": "javorszky.mariann@gmail.com",
+            "password": "kiscica"
+        },
+        {
+            "username": "Kinga",
+            "email-address": "magyar.kinga89@gmail.com",
+            "password": "kiscica"
+        }
+    ]
+}
