@@ -9,7 +9,9 @@
     "test:ci": "node ./node_modules/jest/bin/jest.js",
     "build:android": "expo login -u $EXPO_USER -p $EXPO_PASSWORD && expo build:android --non-interactive",
     "build:ios": "expo login -u $EXPO_USER -p $EXPO_PASSWORD && expo build:ios --non-interactive --apple-id $EXPO_APPLE_ID",
-    "build:all": "npm run build:ios && npm run build:android"
+    "build:all": "npm run build:ios && npm run build:android",
+    "lint": "eslint .",
+    "lint:watch": "esw . -w"
   },
   "jest": {
     "preset": "jest-expo"
@@ -21,6 +23,13 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.5.1",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "eslint-watch": "^5.1.2",
     "jest-expo": "^32.0.0"
   },
   "private": true
