@@ -97,7 +97,6 @@ export default class SignInScreen extends React.Component {
             </View>
         );
     };
-};
 
 const styles = StyleSheet.create({
     inputContainer:
