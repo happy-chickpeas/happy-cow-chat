@@ -6,5 +6,5 @@ services:
 script:
   - ./node-env prod npm run lint
   - ./node-env prod npm run test
-  - ./node-env prod npm run build:android
+  - if [ $TRAVIS_BRANCH = 'master' ] ; then ./node-env prod npm run build:android; fi
 

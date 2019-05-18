@@ -1,4 +1,4 @@
-![travis-build](https://travis-ci.org/happy-chickpeas/happy-cow-chat.svg?branch=master)
+[![travis-build](https://travis-ci.org/happy-chickpeas/happy-cow-chat.svg?branch=master)](https://travis-ci.org/happy-chickpeas/happy-cow-chat)
 # happy-cow-chat
 
 Scope: Create a demo chat app that can be the basis of future developments for
