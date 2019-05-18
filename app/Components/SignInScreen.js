@@ -3,24 +3,36 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet  } from 'react-nati
 import SvgUri from 'react-native-svg-uri';
 import CustomTextInput from './CustomTextInput'
 
-const SignInScreen = () => {
-    return (
-        <View>
-            <View style={styles.inputContainer}>
-                <SvgUri style={styles.logo}
-                    width="200"
-                    height="200"
-                    source={require('../imgs/happycow-logo.svg')}
-                />
-                
-                <CustomTextInput placeholder="Username or email"></CustomTextInput>
-                <CustomTextInput placeholder="Password" secureTextEntry={true}></CustomTextInput>
-                <TouchableOpacity onPress={this.handlPress}>
-                    <Text style={styles.button}>Login</Text>
-                </TouchableOpacity>
+export default class SignInScreen extends React.Component {
+    state = {
+        isUsernameTyping: false
+    }
+    
+    stateCallback = (customTextInputState) => {
+        this.setState({isUsernameTyping: customTextInputState})
+    }
+    
+    render() {
+        const style = this.state.isUsernameTyping ? styles.inputContainerFocused : styles.inputContainer;
+
+        return (
+            <View>
+                <View style={style}>
+                    <SvgUri style={styles.logo}
+                        width="200"
+                        height="200"
+                        source={require('../imgs/happycow-logo.svg')}
+                    />
+                    
+                    <CustomTextInput placeholder="Username or email" stateCallback={this.stateCallback.bind(this)}></CustomTextInput>
+                    <CustomTextInput placeholder="Password" secureTextEntry={true} stateCallback={this.stateCallback.bind(this)}></CustomTextInput>
+                    <TouchableOpacity onPress={this.handlPress}>
+                        <Text style={styles.button}>Login</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
-    );
+        );
+    };
 };
 
 const styles = StyleSheet.create({
@@ -28,6 +40,14 @@ const styles = StyleSheet.create({
     {
         backgroundColor: '#80DED9',
         paddingTop: 50,
+        paddingRight: 40,
+        paddingLeft: 40,
+        marginTop: 20
+    },
+    inputContainerFocused:
+    {
+        backgroundColor: '#80DED9',
+        paddingTop: 10,
         paddingRight: 40,
         paddingLeft: 40,
         marginTop: 20
@@ -53,5 +73,3 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     }
 });
-
-export default SignInScreen;
