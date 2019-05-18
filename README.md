@@ -1,10 +1,13 @@
+![travis-build](https://travis-ci.org/happy-chickpeas/happy-cow-chat.svg?branch=master)
 # happy-cow-chat
 
-Scope: Create a demo chat app that can be the basis of future developments for the HappyCow Team.
+Scope: Create a demo chat app that can be the basis of future developments for
+the HappyCow Team.
 
 ## Start Development
 
-Please read the [`CONTRIBUTING.md`](CONTRIBUTING.md) for contribution guidelines.
+Please read the [`CONTRIBUTING.md`](CONTRIBUTING.md) for contribution
+guidelines.
 
 ### Setup Development environment
 
