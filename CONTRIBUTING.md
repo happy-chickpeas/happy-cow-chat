@@ -9,13 +9,15 @@ If you don't have Docker:
  -  Clone the Project
  -  `cd <path/to/your/code>`
  -  `cd app`
- -  `npm intall`
- -  `expo start`
+ -  `npm install`
+ -  `npm start`
 
 If you have Docker:
 
  -  Clone the Project
  -  `cd <path/to/your/code>`
+ -  ./node-env yarn install
+ -  ./node-env yarn start
 
 ## Contribute Code
 
