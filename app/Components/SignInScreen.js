@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet  } from 'react-native';
 import SvgUri from 'react-native-svg-uri';
+import CustomTextInput from './CustomTextInput'
 
 const SignInScreen = () => {
     return (
@@ -11,8 +12,9 @@ const SignInScreen = () => {
                     height="200"
                     source={require('../imgs/happycow-logo.svg')}
                 />
-                <TextInput style={styles.textInput} placeholder="Username or email" placeholderTextColor="#80DED9"></TextInput>
-                <TextInput style={styles.textInput} placeholder="Password" placeholderTextColor="#80DED9" secureTextEntry={true}></TextInput>
+                
+                <CustomTextInput placeholder="Username or email"></CustomTextInput>
+                <CustomTextInput placeholder="Password" secureTextEntry={true}></CustomTextInput>
                 <TouchableOpacity onPress={this.handlPress}>
                     <Text style={styles.button}>Login</Text>
                 </TouchableOpacity>
@@ -33,20 +35,6 @@ const styles = StyleSheet.create({
     logo:
     {
         alignItems: 'center'
-    },
-    textInput:
-    {
-        backgroundColor: '#fff',
-        borderColor: '#80DED9',
-        borderTopWidth: 1,
-        borderBottomWidth: 1,
-        height: 50,
-        fontSize: 15,
-        paddingLeft: 20,
-        paddingRight: 20,
-        textAlign: 'center',
-        marginBottom: 15,
-        borderRadius: 25
     },
     button:
     {
