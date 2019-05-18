@@ -12,6 +12,11 @@ const MainNavigator = createStackNavigator({
 const NavigatorHandler = createAppContainer(MainNavigator);
 
 export default class App extends React.Component {
+  componentDidMount() {
+    /* eslint no-console: 0 */
+    console.log('App Started');
+  }
+
   render() {
     return (      
         <NavigatorHandler></NavigatorHandler>
