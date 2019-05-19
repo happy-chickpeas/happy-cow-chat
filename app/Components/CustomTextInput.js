@@ -19,8 +19,7 @@ export default class CustomTextInput extends React.Component
                     this.props.stateCallback(false);
                     this.props.textInputCallback(event.nativeEvent.text)}
                 }
-                >
-            </TextInput>
+            />
         );
     }
 };

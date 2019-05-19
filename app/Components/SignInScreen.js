@@ -59,15 +59,15 @@ export default class SignInScreen extends React.Component {
                     style={styles.logo}/>
                 <CustomTextInput
                     placeholder="Username or email"
-                    stateCallback={this.stateCallback.bind(this)}
-                    textInputCallback={this.usernameEditingCallback.bind(this)}
-                ></CustomTextInput>
+                    stateCallback={this.stateCallback}
+                    textInputCallback={this.usernameEditingCallback}
+                />
                 <CustomTextInput
                     placeholder="Password"
                     secureTextEntry={true}
-                    stateCallback={this.stateCallback.bind(this)}
-                    textInputCallback={this.passwordEditingCallback.bind(this)}
-                ></CustomTextInput>
+                    stateCallback={this.stateCallback}
+                    textInputCallback={this.passwordEditingCallback}
+                />
                 <TouchableOpacity onPress={() => {
                         if (this.checkLogin()) {
                             navigate('InboxScreen')
@@ -85,7 +85,7 @@ export default class SignInScreen extends React.Component {
                     dialogTitle={<DialogTitle title="Login failed" />}
                     footer={
                         <DialogFooter>
-                            <DialogButton text="OK" onPress={() => this.setState({ dialogVisible: false })}></DialogButton>
+                            {[<DialogButton key="1" text="OK" onPress={() => this.setState({ dialogVisible: false })}/>]}
                         </DialogFooter>
                     }
                 >
