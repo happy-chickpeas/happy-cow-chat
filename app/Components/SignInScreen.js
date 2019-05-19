@@ -104,20 +104,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#80DED9',
     paddingRight: 40,
     paddingLeft: 40,
-    flex: 1
+    flex: 1,
+    alignContent: 'center'
   },
   inputContainerFocused:
   {
     backgroundColor: '#80DED9',
     paddingRight: 40,
     paddingLeft: 40,
-    flex: 1
+    flex: 1,
+    alignContent: 'center'
   },
   logo:
   {
     height: 200,
-    width: 250,
-    alignContent: 'center'
+    width: 250
   },
   button:
   {
