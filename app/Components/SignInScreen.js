@@ -4,6 +4,10 @@ import SvgUri from 'react-native-svg-uri';
 import CustomTextInput from './CustomTextInput'
 
 export default class SignInScreen extends React.Component {
+    componentDidMount() {
+        this.setState({users: require('../users.json')});
+    }
+
     state = {
         isUsernameTyping: false,
         attemptedUsername: "",
@@ -36,10 +40,11 @@ export default class SignInScreen extends React.Component {
     }
     
     checkLogin = () => {
-        if (this.state.attemptedUsername == "Mazsi" && this.state.attemptedPassword == "kiscica") {
-            return true;
-        }
-        return false;
+        const find = this.state.users.users.find((elem) => {
+            return (this.state.attemptedUsername == elem.username || this.state.attemptedUsername == elem.email_address)
+                    && this.state.attemptedPassword == elem.password;
+        });
+        return find;
     }
 
     render() {
