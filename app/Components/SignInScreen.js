@@ -4,10 +4,6 @@ import Dialog, { DialogContent, DialogTitle, DialogButton, DialogFooter } from '
 import CustomTextInput from './CustomTextInput'
 
 export default class SignInScreen extends React.Component {
-  componentDidMount() {
-    this.setState({users: require('../users.json')});
-  }
-
   state = {
     isUsernameTyping: false,
     attemptedUsername: "",
@@ -27,7 +23,7 @@ export default class SignInScreen extends React.Component {
       borderBottomWidth: 0,
     },
   }
-  
+
   stateCallback = (customTextInputState) => {
     this.setState({isUsernameTyping: customTextInputState})
   }
@@ -39,7 +35,11 @@ export default class SignInScreen extends React.Component {
   passwordEditingCallback = (password) => {
     this.setState({attemptedPassword: password})
   }
-  
+
+  componentDidMount() {
+    this.setState({users: require('../users.json')});
+  }
+
   checkLogin = () => {
     const find = this.state.users.users.find((elem) => {
       return (this.state.attemptedUsername == elem.username || this.state.attemptedUsername == elem.email_address)

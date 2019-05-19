@@ -1,6 +1,9 @@
 {
   "extends": "airbnb",
-  "plugins": ["jest"],
+  "plugins": [
+    "jest",
+    "babel"
+  ],
   "env": {
     "jest/globals": true
   },
@@ -11,6 +14,13 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error"
+    "jest/valid-expect": "error",
+    "babel/new-cap": 1,
+    "babel/camelcase": 1,
+    "babel/no-invalid-this": 1,
+    "babel/object-curly-spacing": 1,
+    "babel/semi": 1,
+    "babel/no-unused-expressions": 1,
+    "babel/valid-typeof": 1
   }
 }
