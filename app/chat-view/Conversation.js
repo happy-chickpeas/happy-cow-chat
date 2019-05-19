@@ -127,14 +127,16 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center'
   },
   linearGradient: {
-    flex: 1
+    flex: 1,
+    padding: 20
   },
   messages: {
     justifyContent: 'flex-end',
     flexGrow: 1
   },
   messageSent: {
-    textAlign: 'right'
+    textAlign: 'right',
+    fontSize: 18,
   },
   textContainer: {
     flex: 6
