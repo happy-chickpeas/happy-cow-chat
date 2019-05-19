@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import Dialog, { DialogContent, DialogTitle, DialogButton, DialogFooter } from 'react-native-popup-dialog';
 import SvgUri from 'react-native-svg-uri';
 import CustomTextInput from './CustomTextInput'
@@ -55,11 +55,8 @@ export default class SignInScreen extends React.Component {
         const {navigate} = this.props.navigation;
         return (
            <View style={style}>
-                <SvgUri style={styles.logo}
-                    width="200"
-                    height="200"
-                    source={require('../imgs/happycow-logo.svg')}
-                />
+                <Image  source={require('../imgs/happycow-logo.png')}
+                    style={styles.logo}/>
                 <CustomTextInput
                     placeholder="Username or email"
                     stateCallback={this.stateCallback.bind(this)}
@@ -106,7 +103,6 @@ const styles = StyleSheet.create({
     inputContainer:
     {
         backgroundColor: '#80DED9',
-        paddingTop: 50,
         paddingRight: 40,
         paddingLeft: 40,
         paddingBottom: 200
@@ -120,7 +116,9 @@ const styles = StyleSheet.create({
     },
     logo:
     {
-        alignItems: 'center'
+        height: 200,
+        width: 250,
+        alignContent: 'center'
     },
     button:
     {
