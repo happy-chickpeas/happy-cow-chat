@@ -8,8 +8,11 @@ class Messages extends React.Component {
     this.messagesWrap.scrollToEnd();
   }
 
-  componentWillUpdate() {
-    this.onLayout();
+  componentDidUpdate() {
+    // Somehow it does not work without this
+    setTimeout(() => {
+      this.onLayout();
+    }, 0);
   }
 
   render() {
@@ -55,9 +58,9 @@ export default class Chat extends Component {
     const KEYBOARD_VERTICAL_OFFSET = (Header.HEIGHT || 0) + (StatusBar.currentHeight || 0);
 
     return (
-      <KeyboardAvoidingView 
-        behavior='padding' 
-        enabled 
+      <KeyboardAvoidingView
+        behavior='padding'
+        enabled
         style={styles.conversationContainer}
         keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}>
         <View style={styles.headerContainer}>
@@ -84,11 +87,14 @@ export default class Chat extends Component {
             }}
             value={this.state.messageToSend}
           />
-          <Button 
+          <Button
           color='#7C4EC4'
-          title='Send' 
-          accessibilityLabel='Send message' 
+          title='Send'
+          accessibilityLabel='Send message'
           onPress={() => {
+            if (this.state.messageToSend.length === 0) {
+              return;
+            }
             this.setState((prevState) => {
               return { messageToSend: '', messages: [...prevState.messages, prevState.messageToSend] }
             })
