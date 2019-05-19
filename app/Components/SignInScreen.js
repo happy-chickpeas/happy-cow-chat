@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Dialog, { DialogContent, DialogTitle } from 'react-native-popup-dialog';
+import Dialog, { DialogContent, DialogTitle, DialogButton, DialogFooter } from 'react-native-popup-dialog';
 import SvgUri from 'react-native-svg-uri';
 import CustomTextInput from './CustomTextInput'
 
@@ -54,46 +54,49 @@ export default class SignInScreen extends React.Component {
 
         const {navigate} = this.props.navigation;
         return (
-            <View>
-                <View style={style}>
-                    <SvgUri style={styles.logo}
-                        width="200"
-                        height="200"
-                        source={require('../imgs/happycow-logo.svg')}
-                    />                    
-                    <CustomTextInput
-                        placeholder="Username or email"
-                        stateCallback={this.stateCallback.bind(this)}
-                        textInputCallback={this.usernameEditingCallback.bind(this)}
-                    ></CustomTextInput>
-                    <CustomTextInput
-                        placeholder="Password"
-                        secureTextEntry={true}
-                        stateCallback={this.stateCallback.bind(this)}
-                        textInputCallback={this.passwordEditingCallback.bind(this)}
-                    ></CustomTextInput>
-                    <TouchableOpacity onPress={() => {
-                            if (this.checkLogin()) {
-                                navigate('InboxScreen')
-                            } else {
-                                this.setState({ dialogVisible: true });
-                            }
-                        }}
-                    >
-                    <Text style={styles.button}>Login</Text>
-                    <Dialog
-                        visible={this.state.dialogVisible}
-                        onTouchOutside={() => {
-                        this.setState({ dialogVisible: false });
-                        }}
-                        dialogTitle={<DialogTitle title="Login failed" />}
-                    >
-                        <DialogContent>
-                            <Text>Invalid username or password</Text>
-                        </DialogContent>
-                    </Dialog>
-                    </TouchableOpacity>
-                </View>
+           <View style={style}>
+                <SvgUri style={styles.logo}
+                    width="200"
+                    height="200"
+                    source={require('../imgs/happycow-logo.svg')}
+                />
+                <CustomTextInput
+                    placeholder="Username or email"
+                    stateCallback={this.stateCallback.bind(this)}
+                    textInputCallback={this.usernameEditingCallback.bind(this)}
+                ></CustomTextInput>
+                <CustomTextInput
+                    placeholder="Password"
+                    secureTextEntry={true}
+                    stateCallback={this.stateCallback.bind(this)}
+                    textInputCallback={this.passwordEditingCallback.bind(this)}
+                ></CustomTextInput>
+                <TouchableOpacity onPress={() => {
+                        if (this.checkLogin()) {
+                            navigate('InboxScreen')
+                        } else {
+                            this.setState({ dialogVisible: true });
+                        }
+                    }}
+                >
+                <Text style={styles.button}>Login</Text>
+                <Dialog
+                    visible={this.state.dialogVisible}
+                    onTouchOutside={() => {
+                    this.setState({ dialogVisible: false });
+                    }}
+                    dialogTitle={<DialogTitle title="Login failed" />}
+                    footer={
+                        <DialogFooter>
+                            <DialogButton text="OK" onPress={() => this.setState({ dialogVisible: false })}></DialogButton>
+                        </DialogFooter>
+                    }
+                >
+                    <DialogContent>
+                        <Text>Invalid username or password</Text>
+                    </DialogContent>
+                </Dialog>
+                </TouchableOpacity>
             </View>
         );
     };
