@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet  } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Dialog, { DialogContent, DialogTitle } from 'react-native-popup-dialog';
 import SvgUri from 'react-native-svg-uri';
 import CustomTextInput from './CustomTextInput'
 
@@ -11,7 +12,8 @@ export default class SignInScreen extends React.Component {
     state = {
         isUsernameTyping: false,
         attemptedUsername: "",
-        attemptedPassword: ""
+        attemptedPassword: "",
+        dialogVisible: false
     }
 
     static navigationOptions = {
@@ -70,8 +72,26 @@ export default class SignInScreen extends React.Component {
                         stateCallback={this.stateCallback.bind(this)}
                         textInputCallback={this.passwordEditingCallback.bind(this)}
                     ></CustomTextInput>
-                    <TouchableOpacity onPress={() => {if (this.checkLogin()){navigate('InboxScreen')}}}>
-                        <Text style={styles.button}>Login</Text>
+                    <TouchableOpacity onPress={() => {
+                            if (this.checkLogin()) {
+                                navigate('InboxScreen')
+                            } else {
+                                this.setState({ dialogVisible: true });
+                            }
+                        }}
+                    >
+                    <Text style={styles.button}>Login</Text>
+                    <Dialog
+                        visible={this.state.dialogVisible}
+                        onTouchOutside={() => {
+                        this.setState({ dialogVisible: false });
+                        }}
+                        dialogTitle={<DialogTitle title="Login failed" />}
+                    >
+                        <DialogContent>
+                            <Text>Invalid username or password</Text>
+                        </DialogContent>
+                    </Dialog>
                     </TouchableOpacity>
                 </View>
             </View>
