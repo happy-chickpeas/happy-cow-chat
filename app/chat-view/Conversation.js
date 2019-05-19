@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, View, ScrollView, StatusBar, StyleSheet, Text, TextInput } from 'react-native';
 import { LinearGradient } from 'expo';
 import { Header } from 'react-navigation-stack';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
+
 
 class Messages extends React.Component {
   onLayout() {
@@ -50,9 +52,21 @@ export default class Chat extends Component {
     };
   }
 
-  static navigationOptions = {
-    title: 'Chat',
-  };
+  static navigationOptions = ({navigation}) => ({
+    title: 'Jane Doe',
+    headerStyle: {
+      backgroundColor: '#C9B7E6',
+      borderColor: '#C9B7E6',
+      shadowColor: 'transparent'
+    },
+    headerLeft: (
+        <Button
+          onPress={() => {navigation.goBack()}}
+          title=" < "
+          color="#7C4EC4"
+        />
+    )
+  });
 
   render() {
     const KEYBOARD_VERTICAL_OFFSET = (Header.HEIGHT || 0) + (StatusBar.currentHeight || 0);
@@ -63,16 +77,13 @@ export default class Chat extends Component {
         enabled
         style={styles.conversationContainer}
         keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}>
-        <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Jane Doe</Text>
-        </View>
         <View style={styles.textContainer}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={styles.textContainer}>
               <LinearGradient
                 colors={['#fff', '#80DED9', '#80DED9']}
                 style={styles.linearGradient}>
                 <Messages>
-                  {this.state.messages.map((message, i) => <Text key={i}>{message}</Text>)}
+                  {this.state.messages.map((message, i) => <Text key={i} style={styles.messageSent}>{message}</Text>)}
                 </Messages>
               </LinearGradient>
           </TouchableWithoutFeedback>
@@ -110,11 +121,6 @@ const styles = StyleSheet.create({
   conversationContainer: {
     flex: 1
   },
-  headerContainer: {
-    flex: 1,
-    backgroundColor: '#C9B7E6',
-    justifyContent: 'center'
-  },
   headerText: {
     fontSize: 18,
     textAlign: 'center',
@@ -127,8 +133,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     flexGrow: 1
   },
+  messageSent: {
+    textAlign: 'right'
+  },
   textContainer: {
-    flex: 6,
+    flex: 6
   },
   textInput: {
     flex: 1
