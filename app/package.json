@@ -14,20 +14,21 @@
     "lint:watch": "esw . -w"
   },
   "jest": {
-  "preset": "jest-expo"
+    "preset": "jest-expo"
   },
   "dependencies": {
-  "expo": "^32.0.0",
-  "react": "16.5.0",
-  "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-  "react-native-popup-dialog": "^0.18.2",
-  "react-native-svg-uri": "^1.2.3",
-  "react-navigation": "^3.11.0"
+    "expo": "^32.0.0",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-popup-dialog": "^0.18.2",
+    "react-native-svg-uri": "^1.2.3",
+    "react-navigation": "^3.11.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.5.1",
     "eslint-plugin-jsx-a11y": "^6.1.1",
