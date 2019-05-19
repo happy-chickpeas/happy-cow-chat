@@ -1,48 +1,26 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import SignInScreen from './Components/SignInScreen';
+import InboxScreen from './Components/InboxScreen';
 import Chat from './chat-view/Conversation';
-import { createAppContainer, createStackNavigator } from 'react-navigation';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
 
-export class App extends React.Component {
-  static navigationOptions = {
-    title: 'HappyCow Inbox',
-  };
-  
+const MainNavigator = createStackNavigator({
+  SignInScreen: {screen: SignInScreen},
+  InboxScreen: {screen: InboxScreen},
+  Chat: {screen: Chat}
+});
+
+const NavigatorHandler = createAppContainer(MainNavigator);
+
+export default class App extends React.Component {
+  componentDidMount() {
+    /* eslint no-console: 0 */
+    console.log('App Started');
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Button 
-          color='#7C4EC4'
-          title='Chat' 
-          accessibilityLabel='Enter chat' 
-          onPress={() => {
-            this.props.navigation.navigate('Chat')
-          }}
-          />
-        <Text>Mooo!</Text>
-      </View>
+      <NavigatorHandler></NavigatorHandler>
     );
   }
 }
-
-const AppNavigator = createStackNavigator({
-  Inbox: {
-    screen: App,
-  },
-  Chat: {
-    screen: Chat,
-  },
-}, {
-    initialRouteName: 'Inbox',
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default createAppContainer(AppNavigator);
