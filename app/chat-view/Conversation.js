@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { FlatList, Keyboard, KeyboardAvoidingView, View, Platform, StyleSheet, Text, TextInput } from 'react-native';
+import { FlatList, Keyboard, KeyboardAvoidingView, View, Platform, StatusBar, StyleSheet, Text, TextInput } from 'react-native';
 import { LinearGradient } from 'expo';
+import { Header } from 'react-navigation-stack';
+
+
 
 class ChatTextInput extends Component {
   render() {
@@ -8,7 +11,7 @@ class ChatTextInput extends Component {
       <TextInput
         {...this.props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
         editable={true}
-        maxLength={40}
+        placeholder="Type your message here!"
       />
     );
   }
@@ -18,13 +21,19 @@ export default class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: 'Type your message here!',
+      placeholder: 'Type your message here!',
     };
   }
 
   render() {
+    const KEYBOARD_VERTICAL_OFFSET = (Header.HEIGHT || 0) + (StatusBar.currentHeight || 0);
+
     return (
-      <View style={styles.conversationContainer}>
+      <KeyboardAvoidingView 
+        behavior='height' 
+        enabled 
+        style={styles.conversationContainer}
+        keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}>
         <View style={styles.headerContainer}>
           <Text>One</Text>
         </View>
@@ -42,7 +51,7 @@ export default class Chat extends Component {
             value={this.state.text}
           />
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -61,6 +70,5 @@ const styles = StyleSheet.create({
   inputField: {
     flex: 1,
     backgroundColor: '#C9B7E6',
-    flexDirection: 'row',
   }
 });
