@@ -6,7 +6,7 @@ import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 
 class Messages extends React.Component {
-  onLayout() {
+  onLayout = () => {
     this.messagesWrap.scrollToEnd();
   }
 
@@ -20,7 +20,7 @@ class Messages extends React.Component {
   render() {
     return (
       <ScrollView
-        onLayout={this.onLayout.bind(this)}
+        onLayout={this.onLayout}
         contentContainerStyle={styles.messages}
         style={styles.messagesWrap}
         ref={(c) => {this.messagesWrap = c}}>
