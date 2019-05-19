@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo';
 import { Header } from 'react-navigation-stack';
 
 class Messages extends React.Component {
-  onLayout() {
+  onLayout = () => {
     this.messagesWrap.scrollToEnd();
   }
 
@@ -18,7 +18,7 @@ class Messages extends React.Component {
   render() {
     return (
       <ScrollView
-        onLayout={this.onLayout.bind(this)}
+        onLayout={this.onLayout}
         contentContainerStyle={styles.messages}
         style={styles.messagesWrap}
         ref={(c) => {this.messagesWrap = c}}>
