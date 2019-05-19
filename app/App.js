@@ -1,5 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import SignInScreen from './Components/SignInScreen';
+import InboxScreen from './Components/InboxScreen';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
+
+const MainNavigator = createStackNavigator({
+  SignInScreen: {screen: SignInScreen},
+  InboxScreen: {screen: InboxScreen},
+});
+
+const NavigatorHandler = createAppContainer(MainNavigator);
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -8,19 +17,8 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Mooo!</Text>
-      </View>
+    return (  
+      <NavigatorHandler></NavigatorHandler>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
