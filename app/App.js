@@ -4,6 +4,10 @@ import Chat from './chat-view/Conversation';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 
 export class App extends React.Component {
+  static navigationOptions = {
+    title: 'Inbox',
+  };
+  
   render() {
     return (
       <View style={styles.container}>

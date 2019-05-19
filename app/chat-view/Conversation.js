@@ -1,15 +1,35 @@
 import React, { Component } from 'react';
-import { FlatList, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback,View, Platform, StatusBar, StyleSheet, Text, TextInput } from 'react-native';
+import { Button, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, View, ScrollView, StatusBar, StyleSheet, Text, TextInput } from 'react-native';
 import { LinearGradient } from 'expo';
 import { Header } from 'react-navigation-stack';
 
+class Messages extends React.Component {
+  onLayout() {
+    this.messagesWrap.scrollToEnd();
+  }
 
+  componentWillUpdate() {
+    this.onLayout();
+  }
+
+  render() {
+    return (
+      <ScrollView
+        onLayout={this.onLayout.bind(this)}
+        contentContainerStyle={styles.messages}
+        style={styles.messagesWrap}
+        ref={(c) => {this.messagesWrap = c}}>
+          {this.props.children}
+      </ScrollView>
+    );
+  }
+}
 
 class ChatTextInput extends Component {
   render() {
     return (
       <TextInput
-        {...this.props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
+        {...this.props}
         style={styles.textInput}
         editable={true}
         placeholder="Type your message here!"
@@ -22,9 +42,14 @@ export default class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      placeholder: 'Type your message here!',
+      messageToSend: '',
+      messages: []
     };
   }
+
+  static navigationOptions = {
+    title: 'Chat',
+  };
 
   render() {
     const KEYBOARD_VERTICAL_OFFSET = (Header.HEIGHT || 0) + (StatusBar.currentHeight || 0);
@@ -36,22 +61,38 @@ export default class Chat extends Component {
         style={styles.conversationContainer}
         keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}>
         <View style={styles.headerContainer}>
-          <Text>One</Text>
+          <Text style={styles.headerText}>Jane Doe</Text>
         </View>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.textContainer}>
-          <LinearGradient
-            colors={['#fff', '#80DED9', '#80DED9']}
-            style={{ flex: 1 }}>
-            <Text>Two</Text>
-          </LinearGradient>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false} style={styles.textContainer}>
+              <LinearGradient
+                colors={['#fff', '#80DED9', '#80DED9']}
+                style={styles.linearGradient}>
+                <Messages>
+                  {this.state.messages.map((message, i) => <Text key={i}>{message}</Text>)}
+                </Messages>
+              </LinearGradient>
+          </TouchableWithoutFeedback>
         </View>
-        </TouchableWithoutFeedback>
         <View style={styles.inputField}>
           <ChatTextInput
             multiline={true}
-            onChangeText={(text) => this.setState({ text })}
-            value={this.state.text}
+            onChangeText={(text) => {
+              this.setState((prevState) => {
+                return { messageToSend: text, messages: prevState.messages }
+              })
+            }}
+            value={this.state.messageToSend}
+          />
+          <Button 
+          color='#7C4EC4'
+          title='Send' 
+          accessibilityLabel='Send message' 
+          onPress={() => {
+            this.setState((prevState) => {
+              return { messageToSend: '', messages: [...prevState.messages, prevState.messageToSend] }
+            })
+          }}
           />
         </View>
       </KeyboardAvoidingView>
@@ -66,6 +107,19 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 1,
     backgroundColor: '#C9B7E6',
+    justifyContent: 'center'
+  },
+  headerText: {
+    fontSize: 18,
+    textAlign: 'center',
+    textAlignVertical: 'center'
+  },
+  linearGradient: {
+    flex: 1
+  },
+  messages: {
+    justifyContent: 'flex-end',
+    flexGrow: 1
   },
   textContainer: {
     flex: 6,
@@ -76,5 +130,6 @@ const styles = StyleSheet.create({
   inputField: {
     flex: 1,
     backgroundColor: '#C9B7E6',
+    flexDirection: 'row'
   }
 });
