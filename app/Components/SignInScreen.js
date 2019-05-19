@@ -104,14 +104,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#80DED9',
     paddingRight: 40,
     paddingLeft: 40,
-    paddingBottom: 200
+    flex: 1
   },
   inputContainerFocused:
   {
     backgroundColor: '#80DED9',
     paddingRight: 40,
     paddingLeft: 40,
-    paddingBottom: 200
+    flex: 1
   },
   logo:
   {
