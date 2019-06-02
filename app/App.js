@@ -1,13 +1,13 @@
 import React from 'react';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
 import SignInScreen from './Components/SignInScreen';
 import InboxScreen from './Components/InboxScreen';
 import Chat from './chat-view/Conversation';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 const MainNavigator = createStackNavigator({
   SignInScreen: {screen: SignInScreen},
   InboxScreen: {screen: InboxScreen},
-  Chat: {screen: Chat}
+  Chat: {screen: Chat},
 });
 
 const NavigatorHandler = createAppContainer(MainNavigator);
@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <NavigatorHandler></NavigatorHandler>
+      <NavigatorHandler />
     );
   }
 }

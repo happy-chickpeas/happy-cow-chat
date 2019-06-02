@@ -3,12 +3,12 @@
   [
     {
       "username": "Mazsi",
-      "email_address": "javorszky.mariann@gmail.com",
+      "emailAddress": "javorszky.mariann@gmail.com",
       "password": "kiscica"
     },
     {
       "username": "Kinga",
-      "email_address": "kinga.magyar89@gmail.com",
+      "emailAddress": "kinga.magyar89@gmail.com",
       "password": "kiscica"
     }
   ]

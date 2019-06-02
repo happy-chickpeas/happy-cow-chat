@@ -1,16 +1,22 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import Dialog, { DialogContent, DialogTitle, DialogButton, DialogFooter } from 'react-native-popup-dialog';
-import CustomTextInput from './CustomTextInput'
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+} from 'react-native';
+import Dialog, {
+  DialogContent,
+  DialogTitle,
+  DialogButton,
+  DialogFooter,
+} from 'react-native-popup-dialog';
+import CustomTextInput from './CustomTextInput';
+import logo from '../imgs/happycow-logo.png';
+import {users} from '../users.json';
 
 export default class SignInScreen extends React.Component {
-  state = {
-    isUsernameTyping: false,
-    attemptedUsername: "",
-    attemptedPassword: "",
-    dialogVisible: false
-  }
-
   static navigationOptions = {
     headerStyle: {
       backgroundColor: '#80DED9',
@@ -22,40 +28,46 @@ export default class SignInScreen extends React.Component {
       },
       borderBottomWidth: 0,
     },
-  }
+  };
+
+  state = {
+    isUsernameTyping: false,
+    attemptedUsername: '',
+    attemptedPassword: '',
+    dialogVisible: false,
+  };
 
   stateCallback = (customTextInputState) => {
-    this.setState({isUsernameTyping: customTextInputState})
-  }
+    this.setState({isUsernameTyping: customTextInputState});
+  };
 
   usernameEditingCallback = (username) => {
-    this.setState({attemptedUsername: username})
-  }
+    this.setState({attemptedUsername: username});
+  };
 
   passwordEditingCallback = (password) => {
-    this.setState({attemptedPassword: password})
-  }
-
-  componentDidMount() {
-    this.setState({users: require('../users.json')});
-  }
+    this.setState({attemptedPassword: password});
+  };
 
   checkLogin = () => {
-    const find = this.state.users.users.find((elem) => {
-      return (this.state.attemptedUsername == elem.username || this.state.attemptedUsername == elem.email_address)
-          && this.state.attemptedPassword == elem.password;
-    });
-    return find;
-  }
+    const {attemptedUsername, attemptedPassword} = this.state;
+    const isValidUser = ({username, emailAddress, password}) =>
+      (attemptedUsername === username || attemptedUsername === emailAddress) &&
+      attemptedPassword === password;
+    return users.find(isValidUser);
+  };
 
   render() {
-    const style = this.state.isUsernameTyping ? styles.inputContainerFocused : styles.inputContainer;
+    const {navigation: {navigate}} = this.props;
+    const {dialogVisible, isUsernameTyping} = this.state;
+    const style = isUsernameTyping ? styles.inputContainerFocused : styles.inputContainer;
 
-    const {navigate} = this.props.navigation;
     return (
-       <View style={style}>
-        <Image  source={require('../imgs/happycow-logo.png')}
-          style={styles.logo}/>
+      <View style={style}>
+        <Image
+          source={logo}
+          style={styles.logo}
+        />
         <CustomTextInput
           placeholder="Username or email"
           stateCallback={this.stateCallback}
@@ -63,40 +75,40 @@ export default class SignInScreen extends React.Component {
         />
         <CustomTextInput
           placeholder="Password"
-          secureTextEntry={true}
+          secureTextEntry
           stateCallback={this.stateCallback}
           textInputCallback={this.passwordEditingCallback}
         />
         <TouchableOpacity onPress={() => {
-            if (this.checkLogin()) {
-              navigate('InboxScreen')
-            } else {
-              this.setState({ dialogVisible: true });
-            }
-          }}
-        >
-        <Text style={styles.button}>Login</Text>
-        <Dialog
-          visible={this.state.dialogVisible}
-          onTouchOutside={() => {
-          this.setState({ dialogVisible: false });
-          }}
-          dialogTitle={<DialogTitle title="Login failed" />}
-          footer={
-            <DialogFooter>
-              {[<DialogButton key="1" text="OK" onPress={() => this.setState({ dialogVisible: false })}/>]}
-            </DialogFooter>
+          if (this.checkLogin()) {
+            navigate('InboxScreen');
+          } else {
+            this.setState({dialogVisible: true});
           }
+        }}
         >
-          <DialogContent>
-            <Text>Invalid username or password</Text>
-          </DialogContent>
-        </Dialog>
+          <Text style={styles.button}>Login</Text>
+          <Dialog
+            visible={dialogVisible}
+            onTouchOutside={() => {
+              this.setState({dialogVisible: false});
+            }}
+            dialogTitle={<DialogTitle title="Login failed" />}
+            footer={(
+              <DialogFooter>
+                {[<DialogButton key="1" text="OK" onPress={() => this.setState({dialogVisible: false})} />]}
+              </DialogFooter>
+)}
+          >
+            <DialogContent>
+              <Text>Invalid username or password</Text>
+            </DialogContent>
+          </Dialog>
         </TouchableOpacity>
       </View>
     );
-  };
-};
+  }
+}
 
 const styles = StyleSheet.create({
   inputContainer:
@@ -105,7 +117,7 @@ const styles = StyleSheet.create({
     paddingRight: 40,
     paddingLeft: 40,
     flex: 1,
-    alignContent: 'center'
+    alignContent: 'center',
   },
   inputContainerFocused:
   {
@@ -113,12 +125,12 @@ const styles = StyleSheet.create({
     paddingRight: 40,
     paddingLeft: 40,
     flex: 1,
-    alignContent: 'center'
+    alignContent: 'center',
   },
   logo:
   {
     height: 200,
-    width: 250
+    width: 250,
   },
   button:
   {
@@ -133,7 +145,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     overflow: 'hidden',
     padding: 12,
-    textAlign:'center',
+    textAlign: 'center',
     borderRadius: 20,
-  }
+  },
 });
