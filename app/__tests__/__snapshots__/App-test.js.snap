@@ -2,17 +2,285 @@
 
 exports[`App snapshot 1`] = `
 <View
+  onLayout={[Function]}
   style={
     Object {
-      "alignItems": "center",
-      "backgroundColor": "#fff",
       "flex": 1,
-      "justifyContent": "center",
     }
   }
 >
-  <Text>
-    Mooo!
-  </Text>
+  <View
+    enabled={false}
+    hitSlop={
+      Object {
+        "right": 50,
+      }
+    }
+    maxDeltaY={20}
+    minOffsetX={5}
+    onGestureEvent={[Function]}
+    onHandlerStateChange={[Function]}
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#eee",
+          "flex": 1,
+          "flexDirection": "column-reverse",
+          "overflow": "hidden",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          pointerEvents="auto"
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "opacity": 1,
+              "paddingTop": 64,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+              "transform": Array [
+                Object {
+                  "translateX": 0,
+                },
+                Object {
+                  "translateY": 0,
+                },
+              ],
+            }
+          }
+        >
+          <View
+            accessibilityElementsHidden={false}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "flex": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignContent": "center",
+                  "backgroundColor": "#80DED9",
+                  "flex": 1,
+                  "paddingLeft": 40,
+                  "paddingRight": 40,
+                }
+              }
+            >
+              <Image
+                source={1}
+                style={
+                  Object {
+                    "height": 200,
+                    "width": 250,
+                  }
+                }
+              />
+              <TextInput
+                allowFontScaling={true}
+                onEndEditing={[Function]}
+                onFocus={[Function]}
+                placeholder="Username or email"
+                placeholderTextColor="#80DED9"
+                style={
+                  Object {
+                    "backgroundColor": "#fff",
+                    "borderBottomWidth": 1,
+                    "borderColor": "#80DED9",
+                    "borderRadius": 25,
+                    "borderTopWidth": 1,
+                    "fontSize": 15,
+                    "height": 50,
+                    "marginBottom": 15,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "textAlign": "center",
+                  }
+                }
+                underlineColorAndroid="transparent"
+              />
+              <TextInput
+                allowFontScaling={true}
+                onEndEditing={[Function]}
+                onFocus={[Function]}
+                placeholder="Password"
+                placeholderTextColor="#80DED9"
+                secureTextEntry={true}
+                style={
+                  Object {
+                    "backgroundColor": "#fff",
+                    "borderBottomWidth": 1,
+                    "borderColor": "#80DED9",
+                    "borderRadius": 25,
+                    "borderTopWidth": 1,
+                    "fontSize": 15,
+                    "height": 50,
+                    "marginBottom": 15,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "textAlign": "center",
+                  }
+                }
+                underlineColorAndroid="transparent"
+              />
+              <View
+                accessible={true}
+                isTVSelectable={true}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "backgroundColor": "#7C4EC4",
+                      "borderRadius": 20,
+                      "color": "white",
+                      "fontSize": 15,
+                      "fontWeight": "bold",
+                      "marginLeft": 30,
+                      "marginRight": 30,
+                      "marginTop": 10,
+                      "overflow": "hidden",
+                      "padding": 12,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Login
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={
+          Object {
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#80DED9",
+              "transform": Array [
+                Object {
+                  "translateX": 0,
+                },
+              ],
+            }
+          }
+        >
+          <View
+            onLayout={[Function]}
+            pointerEvents="box-none"
+            style={
+              Object {
+                "backgroundColor": "#80DED9",
+                "borderBottomColor": "#A7A7AA",
+                "borderBottomWidth": 0,
+                "borderColor": "#80DED9",
+                "height": 64,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 20,
+                "shadowColor": "transparent",
+                "shadowOffset": Object {
+                  "height": 0,
+                },
+                "shadowRadius": 0,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "bottom": 0,
+                    "flexDirection": "row",
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              >
+                <View
+                  pointerEvents="box-none"
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "bottom": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "left": 0,
+                      "opacity": 1,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityTraits="header"
+                    allowFontScaling={false}
+                    numberOfLines={1}
+                    onLayout={[Function]}
+                    style={
+                      Object {
+                        "color": "rgba(0, 0, 0, .9)",
+                        "fontSize": 17,
+                        "fontWeight": "600",
+                        "marginHorizontal": 16,
+                        "textAlign": "center",
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
 </View>
 `;

@@ -14,7 +14,13 @@
     "lint:watch": "esw . -w"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|react-navigation)/"
+    ]
   },
   "dependencies": {
     "expo": "^32.0.0",
@@ -22,9 +28,12 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-popup-dialog": "^0.18.2",
     "react-native-svg-uri": "^1.2.3",
-    "react-navigation": "^3.11.0"
+    "react-navigation": "^3.11.0",
+    "react-navigation-stack": "^1.4.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
     "babel-preset-expo": "^5.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "17.1.0",
